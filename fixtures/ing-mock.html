@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ING Bank Śląski - Mock</title>
+</head>
+<body>
+    <div class="cookie-policy-banner">
+        <button class="js-cookie-policy-main-settings-button">Dostosuj</button>
+    </div>
+    
+    <div class="cookie-policy-settings" style="display:none;">
+        <label>
+            <input type="checkbox" id="header-2-analytical">
+            Cookies analityczne
+        </label>
+        <button class="js-cookie-policy-settings-decline-button">Zaakceptuj wybrane</button>
+    </div>
+
+    <script>
+        // Mock cookie banner behavior
+        document.querySelector('.js-cookie-policy-main-settings-button').addEventListener('click', function() {
+            this.closest('.cookie-policy-banner').style.display = 'none';
+            document.querySelector('.cookie-policy-settings').style.display = 'block';
+        });
+
+        document.querySelector('.js-cookie-policy-settings-decline-button').addEventListener('click', function() {
+            const analyticalChecked = document.getElementById('header-2-analytical').checked;
+            
+            // Set cookies
+            let consentMask = 1; // Required cookies always = 1
+            if (analyticalChecked) {
+                consentMask |= 2; // ANALYTICAL_BIT = 2
+            }
+            
+            document.cookie = `cookiePolicyGDPR=${consentMask}; path=/`;
+            document.cookie = `cookiePolicyGDPR__details={"analytical":${analyticalChecked}}; path=/`;
+            
+            // Hide banner
+            document.querySelector('.cookie-policy-settings').style.display = 'none';
+            document.querySelector('.js-cookie-policy-main-settings-button').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
