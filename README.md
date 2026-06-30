@@ -13,7 +13,7 @@ Przykład testu który pokrywa przepływ zgody na cookies na stronie banku ing.p
 ```
 python-ing/
 ├── .github/workflows/playwright.yml  # Pipeline CI/CD (matrix: 3 przeglądarki)
-├── pages/cookie_policy_page.py       # Page Object (wszystkie selektory bannera)
+├── pages/cookie_policy_page.py       # Page Object (selektory potrzebne do testu)
 ├── tests/test_cookie_consent.py      # Test (kroki + asercje)
 ├── fixtures/ing-mock.html            # Mock bannera cookies (używany na CI)
 ├── conftest.py                       # Konfiguracja pytest + mockowanie
