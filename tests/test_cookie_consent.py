@@ -11,9 +11,14 @@ def test_user_enables_analytical_cookies_and_choice_is_persisted(
     cookie_page = CookiePolicyPage(page)
 
     cookie_page.open()
+    
+    expect(cookie_page.customize_button).to_be_visible()
     cookie_page.open_customize()
 
+    expect(cookie_page.analytical_toggle).to_be_visible()
     cookie_page.enable_analytical()
+    
+    expect(cookie_page.accept_selected_button).to_be_visible()
     cookie_page.accept_selected()
 
     expect(cookie_page.customize_button).to_be_hidden()

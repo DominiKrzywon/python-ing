@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import Page, Locator
 
 
 class CookiePolicyPage:
@@ -16,13 +16,10 @@ class CookiePolicyPage:
         self.page.goto("/")
 
     def open_customize(self) -> None:
-        expect(self.customize_button).to_be_visible()
         self.customize_button.click()
 
     def enable_analytical(self) -> None:
-        expect(self.analytical_toggle).to_be_visible()
         self.analytical_toggle.click()
 
     def accept_selected(self) -> None:
-        expect(self.accept_selected_button).to_be_visible()
         self.accept_selected_button.click()
